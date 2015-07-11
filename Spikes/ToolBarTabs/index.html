@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" ng-app="myApp">
+	<!-- html page is attached to StarterApp -->
+
+  <head>
+	<!-- the following is standard html stuff -->
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>ToolBarTabs</title>
+
+	<!-- add angular and material stylesheets via CDN -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+
+	<!-- Angular Material Dependencies -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+
+	<!-- angular material icons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+
+	<!-- angular material itself -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angular_material/0.10.0/angular-material.min.js"></script>
+
+	<!-- add our own script(s) -->
+	<script type="text/javascript" src="app.js"></script>
+
+    <meta name="viewport" content="initial-scale=1" />
+  </head>
+
+  <body layout="column">
+
+  <div layout="column" layout-fill>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <span>Toolbar with tabs</span>
+        <!-- fill up the space between left and right area -->
+        <span flex></span>
+        <md-button>
+          Right Bar Button
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-content>
+
+      <div >
+        <md-tabs md-dynamic-height md-border-bottom>
+          <md-tab label="Patches">
+            <md-content ng-Controller="PatchesController as Ctrl">
+              <md-divider >
+                Current patch: {{Ctrl.currentPatch}}
+                <!-- todo text field for current patch-->
+                <form class="form-inline">
+                  <input ng-model="patchnamefilter" type="text" placeholder="Filter patches" autofocus>
+                </form>
+              <md-divider >
+              <md-list >
+                <md-list-item class="md-2-line" ng-repeat="patch in Ctrl.patches.patches | filter:patchnamefilter | orderBy: 'name'" >
+                  <div class="md-list-item-text">
+                    {{patch.name}}
+                    <!-- fill up the space between left and right area -->
+                    <span flex></span>
+                    <md-button ng-click="Ctrl.loadPatch(patch.name)">
+                      Load
+                    </md-button>
+                  </div>
+                </md-list-item>
+              </md-list>
+              <md-divider >
+          </md-content>
+          </md-tab>
+          <md-tab label="Modules">
+            <md-content flex ng-controller="ModulesController as Ctrl">
+            <!-- this div is controlled by ModulesController -->
+              <md-divider >
+            <md-list >
+              <md-list-item class="md-2-line" ng-repeat="module in Ctrl.modules.modules">
+                <div class="md-list-item-text">
+                  <h3>{{module.name}} ( <i>{{module.type}}</i> )</h3>
+                  <h4>Connectors</h4>
+                  <p ng-repeat="connector in module.connectors">
+                    {{connector.name}}
+                    <i>{{connector.type}} {{connector.mode}}</i>
+                  </p>
+                  <h4>Parameters</h4>
+                  <p>
+                    <!-- TODO:  -->
+                    not yet
+                  </p>
+                </div>
+              </md-list-item>
+            </md-list>
+              <md-divider >
+          </md-content>
+          </md-tab>
+          <md-tab label="Connections">
+          <md-content>
+            content 3
+            <br>
+            TODO connections
+          </md-content>
+          </md-tab>
+        </md-tabs>
+      </div>
+
+    </md-content>
+  </div>
+
+
+</div>
+
+  </body>
+</html>
