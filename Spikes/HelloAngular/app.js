@@ -1,6 +1,6 @@
 (function(){
 
-var helloApp = angular.module('helloApp', []);
+var helloApp = angular.module('helloApp', ['ngMaterial']);
 
 // we use the controller as idiom no need to pass the $scope everywhere
 // => need to use this, which is more familiar for java/c++ programmers
