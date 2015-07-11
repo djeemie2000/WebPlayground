@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+<title>My Title</title>
+ <!-- Angular Material Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+
+    <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body>
+<h1>Test</h1>
+<p>{{5+2}}</p>
+<h1>ttt</h1>
+<div ng-controller="MyController as ctrl">
+<p>{{ctrl.someVar}}</p>
+
+<h2>Patches</h2>
+<div ng-repeat="patch in ctrl.patches.patches">
+  <li>{{patch.name}} (<i>{{patch.path}}</i>)</li>
+</div>
+
+</div>
+
+</body>
+</html>
