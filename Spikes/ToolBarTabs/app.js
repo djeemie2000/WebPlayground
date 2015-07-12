@@ -143,7 +143,32 @@ myApp.controller('ModulesController', function() {
 				]
 			}
 		]
-};
+	};
+
+	this.showModules = new Map();
+	for(var idx = 0; idx<this.modules.length; ++idx)
+	{
+		this.showModules[this.modules[idx].name] = false;
+	}
+
+	this.toggleShowModule = function(name) {
+		this.showModules[name] = !this.showModules[name];
+	};
+
+	this.getShowModule = function(name) {
+		return this.showModules[name];
+	}
+
+	this.removeModule = function(name) {
+		//TODO
+		for(var i=0; i<this.modules.modules.length; i++) {
+        if(this.modules.modules[i].name == name) {
+            this.modules.modules.splice(i, 1);
+						//this.showModules.
+            break;
+        }
+    }
+	};
 });
 
 })();
