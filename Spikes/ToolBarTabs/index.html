@@ -56,7 +56,7 @@
                 </form>
               <md-divider >
               <md-list >
-                <md-list-item class="md-2-line" ng-repeat="patch in Ctrl.patches.patches | filter:patchnamefilter | orderBy: 'name'" >
+                <md-list-item class="md-2-line" ng-repeat="patch in Ctrl.getPatches().patches | filter:patchnamefilter | orderBy: 'name'" >
                   <div class="md-list-item-text">
                     {{patch.name}}
                     <!-- fill up the space between left and right area -->
@@ -76,7 +76,7 @@
             <!-- this div is controlled by ModulesController -->
               <md-divider >
             <md-list >
-              <md-list-item layout="column" ng-repeat="module in Ctrl.modules.modules" ng-click="Ctrl.toggleShowModule(module.name)">
+              <md-list-item layout="column" ng-repeat="module in Ctrl.getModules().modules" ng-click="Ctrl.toggleShowModule(module.name)">
                 <div class="md-list-item-text">
                   <md-divider></md-divider>
                   <p>{{module.name}} ( <i>{{module.type}}</i> )</p>
